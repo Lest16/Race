@@ -6,16 +6,15 @@ namespace Assets.Scripts
     {
         public float Speed = 0.9f;
 
-        private Vector3 startPosition;
+        private Vector2 offset;
 
         public void Start () {
-            startPosition = transform.position;
+
         }
 
         public void Update () {
-            Debug.Log(transform.position.y);
-            var newPosition = Mathf.Repeat(Time.time * Speed, 7.17f);
-            transform.position = startPosition + Vector3.up * newPosition;
+            offset = new Vector2(0, Time.time * Speed);
+            GetComponent<Renderer>().material.mainTextureOffset = offset;
         }
     }
 }
